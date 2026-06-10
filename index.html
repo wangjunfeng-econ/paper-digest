@@ -89,17 +89,17 @@
     /* ——侧栏—— */
     .sidebar{ border-right: 1px solid var(--sidebar-border-color); }
     .sidebar .app-name{ margin: 1.4rem 0 1rem; }
-    .sidebar-nav li{ font-size: .93rem; }
-    /* 含子项的折叠分组（往期简报 / 月份）：蓝色加粗 + 折叠箭头 */
-    .sidebar-nav li.has-sub{ color: var(--theme-color); font-weight: 600; cursor: pointer; list-style: none; }
+    .sidebar-nav li{ line-height: 1.7; margin: .32rem 0; }
+    /* 含子项的折叠分组（往期简报 / 月份）：字号稍大、蓝色加粗 + 折叠箭头 */
+    .sidebar-nav li.has-sub{ font-size: 1rem !important; color: var(--theme-color); font-weight: 600; cursor: pointer; list-style: none; }
     .sidebar-nav li.has-sub::before{
       content: "\25B8"; display: inline-block; width: 1em; margin-right: .15em;
-      font-size: .85em; color: var(--theme-color); transition: transform .15s ease;
+      font-size: .8em; color: var(--theme-color); transition: transform .15s ease;
     }
     .sidebar-nav li.has-sub:not(.collapsed)::before{ transform: rotate(90deg); }
     .sidebar-nav li.has-sub.collapsed > ul{ display: none; }
-    /* 末级文章（完整日期）：黑色常规、无箭头、点击跳转 */
-    .sidebar-nav li:not(.has-sub) > a{ color: #2c2f36 !important; font-weight: 400; }
+    /* 末级文章（完整日期）：字号不大于上级、黑色、无箭头、点击跳转 */
+    .sidebar-nav li:not(.has-sub) > a{ font-size: .92rem !important; color: #2c2f36 !important; font-weight: 400; line-height: 1.7; }
     .sidebar-nav li:not(.has-sub) > a.active{ color: var(--theme-color) !important; font-weight: 600; }
 
     /* ——手机端—— */
@@ -129,6 +129,14 @@
       loadSidebar: true,
       homepage: 'README.md',
       auto2top: true,
+      markdown: {
+        renderer: {
+          // 去掉标题默认的锚点超链接，标题=纯静态文字
+          heading: function(text, level){
+            return '<h' + level + '>' + text + '</h' + level + '>';
+          }
+        }
+      },
       alias: { '/.*/_sidebar.md': '/_sidebar.md' },
       themeable: { readyTransition: true, responsiveTables: true },
       search: {
@@ -151,9 +159,10 @@
             var li = e.target.closest('.sidebar-nav li.has-sub');
             if(li && !e.target.closest('.sidebar-nav a')){
               e.preventDefault();
+              e.stopPropagation();   // 抢在 docsify 之前拦截，避免抽屉被收起
               li.classList.toggle('collapsed');
             }
-          });
+          }, true);                  // true = 捕获阶段，先于 docsify 的处理
         }
       ]
     }

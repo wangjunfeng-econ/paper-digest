@@ -8,11 +8,18 @@ cd "$REPO"
 
 # 1) 重建侧栏目录 _sidebar.md（按日期倒序）
 {
-  echo "- [首页](/)"
   echo "- 往期简报"
+  prev=""
   for f in $(ls -1 archive/digest-*.md 2>/dev/null | sort -r); do
-    d=$(basename "$f" .md | sed 's/^digest-//')
-    echo "  - [$d]($f)"
+    d=$(basename "$f" .md | sed 's/^digest-//')   # YYYY-MM-DD
+    y=$(echo "$d" | cut -d- -f1)
+    m=$(echo "$d" | cut -d- -f2)
+    day=$(echo "$d" | cut -d- -f3)
+    if [ "$y-$m" != "$prev" ]; then
+      echo "  - ${y} 年 $((10#$m)) 月"
+      prev="$y-$m"
+    fi
+    echo "    - [$((10#$day)) 日]($f)"
   done
 } > _sidebar.md
 

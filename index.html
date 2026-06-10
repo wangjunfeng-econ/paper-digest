@@ -2,23 +2,126 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>每日文献简报</title>
-  <meta name="description" content="Daily Paper Digest — 财政-货币政策互动 / 多重均衡 / 政策解读 / 每日荐读">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>每日学术简报</title>
+  <meta name="description" content="每日学术简报 — 财政-货币政策互动 / 多重均衡 / 政策解读 / 每日荐读">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="每日学术简报">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#2f5d8a">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+  <style>
+    :root{
+      /* 排版与配色（学术·克制） */
+      --base-font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+      --serif: Georgia, "Times New Roman", "Songti SC", "STSong", "SimSun", serif;
+      --base-font-size: 16.5px;
+      --base-line-height: 1.8;
+      --base-color: #2c2f36;
+
+      --theme-color: #2f5d8a;              /* 墨蓝主色 */
+      --content-max-width: 52rem;          /* 更舒适的正文列宽 */
+      --sidebar-width: 17.5rem;
+      --sidebar-background: #faf8f4;
+      --sidebar-border-color: #ece7dd;
+      --sidebar-name-color: #1f3147;
+      --sidebar-name-font-family: var(--serif);
+
+      --heading-font-family: var(--serif);
+      --heading-color: #1f3147;
+      --link-color: #2f5d8a;
+
+      --search-input-background-color: #fff;
+      --search-result-keyword-background-color: #fcefb6;
+    }
+
+    body{ background: #fbfaf8; }
+
+    /* ——正文区—— */
+    .markdown-section{ padding-top: 1.6rem; padding-bottom: 4rem; }
+    .markdown-section > *{ max-width: 100%; }
+
+    .markdown-section h1{ font-size: 2rem; letter-spacing: .01em; margin-top: 1rem; }
+    .markdown-section h2{
+      font-size: 1.42rem; margin-top: 2.6rem; padding-bottom: .4rem;
+      border-bottom: 2px solid #e8e2d6;
+    }
+    .markdown-section h3{
+      font-size: 1.14rem; color: #38465a; margin-top: 1.9rem;
+      font-family: var(--serif);
+    }
+    .markdown-section p{ margin: .95rem 0; }
+
+    /* 元信息行（作者｜来源｜标签，斜体） */
+    .markdown-section em{ color: #5b6573; font-style: italic; }
+
+    /* 三段式引用块 → 学术卡片 */
+    .markdown-section blockquote{
+      margin: 1.05rem 0;
+      padding: .85rem 1.15rem;
+      border-left: 3px solid var(--theme-color);
+      background: #f5f8fb;
+      border-radius: 0 8px 8px 0;
+      color: #313640;
+    }
+    .markdown-section blockquote p{ margin: .55rem 0; }
+    .markdown-section blockquote strong{ color: #1f3147; }
+
+    /* 链接：低调下划线 */
+    .markdown-section a{
+      text-decoration: none;
+      border-bottom: 1px solid rgba(47,93,138,.32);
+      transition: border-color .15s ease;
+    }
+    .markdown-section a:hover{ border-bottom-color: var(--theme-color); }
+
+    /* 分隔线 */
+    .markdown-section hr{ border: none; border-top: 1px solid #e8e2d6; margin: 2.2rem 0; }
+
+    /* 列表与代码 */
+    .markdown-section ul{ padding-left: 1.3rem; }
+    .markdown-section li{ margin: .3rem 0; }
+
+    /* ——侧栏—— */
+    .sidebar{ border-right: 1px solid var(--sidebar-border-color); }
+    .sidebar .app-name{ margin: 1.4rem 0 1rem; }
+    .sidebar ul li a{ font-size: .93rem; color: #4a525e; }
+    .sidebar ul li.active > a{ color: var(--theme-color); font-weight: 600; }
+
+    /* ——手机端—— */
+    @media (max-width: 768px){
+      :root{ --base-font-size: 16px; }
+      .markdown-section{ padding-left: 20px; padding-right: 20px; }
+      .markdown-section h1{ font-size: 1.7rem; }
+      .markdown-section h2{ font-size: 1.28rem; margin-top: 2.1rem; }
+      .content{ left: 0 !important; }
+    }
+  </style>
 </head>
 <body>
   <div id="app">加载中…</div>
   <script>
     window.$docsify = {
-      name: '每日文献简报',
+      name: '每日学术简报',
+      nameLink: '#/',
       loadSidebar: true,
       subMaxLevel: 2,
       homepage: 'README.md',
       auto2top: true,
-      alias: { '/.*/_sidebar.md': '/_sidebar.md' }
+      alias: { '/.*/_sidebar.md': '/_sidebar.md' },
+      themeable: { readyTransition: true, responsiveTables: true },
+      search: {
+        placeholder: '搜索往期简报…',
+        noData: '没有找到相关内容',
+        depth: 4
+      }
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
 </body>
 </html>

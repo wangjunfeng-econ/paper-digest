@@ -6,3 +6,6 @@ block3_pool_multiplicity.json
 reported_papers.json
 push.log
 .DS_Store
+
+# 本地维护手册——仅自己留存，不上传
+SETUP.md

@@ -21,7 +21,7 @@ latest=$(ls -1 archive/digest-*.md 2>/dev/null | sort -r | head -1 || true)
 if [ -n "${latest:-}" ]; then
   ld=$(basename "$latest" .md | sed 's/^digest-//')
   cat > README.md <<EOF
-# 每日文献简报
+# 每日学术简报
 
 > 财政-货币政策互动 · 理性预期均衡的确定性与多重性 · 政策动态与解读 · 每日荐读
 

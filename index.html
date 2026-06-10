@@ -89,13 +89,18 @@
     /* ——侧栏—— */
     .sidebar{ border-right: 1px solid var(--sidebar-border-color); }
     .sidebar .app-name{ margin: 1.4rem 0 1rem; }
-    .sidebar li{ font-size: .93rem; }
-    /* 含子项的折叠分组（往期简报 / 月份）：蓝色加粗、纯开关 */
-    .sidebar li:has(> ul),
-    .sidebar li:has(> ul) > a{ color: var(--theme-color); font-weight: 600; cursor: pointer; }
-    /* 末级文章（完整日期）：黑色常规、点击跳转 */
-    .sidebar li:not(:has(> ul)) > a{ color: #2c2f36 !important; font-weight: 400; }
-    .sidebar li:not(:has(> ul)) > a.active{ color: var(--theme-color) !important; font-weight: 600; }
+    .sidebar-nav li{ font-size: .93rem; }
+    /* 含子项的折叠分组（往期简报 / 月份）：蓝色加粗 + 折叠箭头 */
+    .sidebar-nav li.has-sub{ color: var(--theme-color); font-weight: 600; cursor: pointer; list-style: none; }
+    .sidebar-nav li.has-sub::before{
+      content: "\25B8"; display: inline-block; width: 1em; margin-right: .15em;
+      font-size: .85em; color: var(--theme-color); transition: transform .15s ease;
+    }
+    .sidebar-nav li.has-sub:not(.collapsed)::before{ transform: rotate(90deg); }
+    .sidebar-nav li.has-sub.collapsed > ul{ display: none; }
+    /* 末级文章（完整日期）：黑色常规、无箭头、点击跳转 */
+    .sidebar-nav li:not(.has-sub) > a{ color: #2c2f36 !important; font-weight: 400; }
+    .sidebar-nav li:not(.has-sub) > a.active{ color: var(--theme-color) !important; font-weight: 600; }
 
     /* ——手机端—— */
     @media (max-width: 768px){
@@ -122,7 +127,6 @@
       name: '每日学术简报',
       nameLink: '#/',
       loadSidebar: true,
-      sidebarDisplayLevel: 1,
       homepage: 'README.md',
       auto2top: true,
       alias: { '/.*/_sidebar.md': '/_sidebar.md' },
@@ -131,12 +135,31 @@
         placeholder: '搜索往期简报…',
         noData: '没有找到相关内容',
         depth: 4
-      }
+      },
+      plugins: [
+        function(hook){
+          hook.doneEach(function(){
+            document.querySelectorAll('.sidebar-nav li').forEach(function(li){
+              if(li.querySelector(':scope > ul')){
+                li.classList.add('has-sub');
+                if(li.querySelector('a.active')) li.classList.remove('collapsed');
+                else li.classList.add('collapsed');
+              }
+            });
+          });
+          document.addEventListener('click', function(e){
+            var li = e.target.closest('.sidebar-nav li.has-sub');
+            if(li && !e.target.closest('.sidebar-nav a')){
+              e.preventDefault();
+              li.classList.toggle('collapsed');
+            }
+          });
+        }
+      ]
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
 </body>
 </html>

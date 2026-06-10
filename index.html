@@ -88,7 +88,22 @@
 
     /* ——侧栏—— */
     .sidebar{ border-right: 1px solid var(--sidebar-border-color); }
-    .sidebar .app-name{ margin: 1.4rem 0 1rem; }
+    /* 侧栏顶部品牌区：logo + 站名 */
+    .sidebar .app-name{
+      margin: 1.4rem .7rem 1.1rem; padding-bottom: 1rem;
+      border-bottom: 1px solid var(--sidebar-border-color); text-align: center;
+    }
+    .sidebar .app-name-link{
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--serif); font-size: 1.24rem; font-weight: 700;
+      color: var(--heading-color) !important; letter-spacing: .02em; border-bottom: none;
+    }
+    .sidebar .app-name-link::before{
+      content: ""; display: inline-block; flex: 0 0 auto;
+      width: 26px; height: 26px; border-radius: 6px;
+      background: url("icon-192.png") center / contain no-repeat;
+      box-shadow: 0 1px 3px rgba(31,49,71,.2);
+    }
     .sidebar-nav li{ line-height: 1.7; margin: .32rem 0; }
     /* 含子项的折叠分组（往期简报 / 月份）：字号稍大、蓝色加粗 + 折叠箭头 */
     .sidebar-nav li.has-sub{ font-size: 1rem !important; color: var(--theme-color); font-weight: 600; cursor: pointer; list-style: none; }

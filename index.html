@@ -89,8 +89,13 @@
     /* ——侧栏—— */
     .sidebar{ border-right: 1px solid var(--sidebar-border-color); }
     .sidebar .app-name{ margin: 1.4rem 0 1rem; }
-    .sidebar ul li a{ font-size: .93rem; color: #4a525e; }
-    .sidebar ul li.active > a{ color: var(--theme-color); font-weight: 600; }
+    .sidebar li{ font-size: .93rem; }
+    /* 含子项的折叠分组（往期简报 / 月份）：蓝色加粗、纯开关 */
+    .sidebar li:has(> ul),
+    .sidebar li:has(> ul) > a{ color: var(--theme-color); font-weight: 600; cursor: pointer; }
+    /* 末级文章（完整日期）：黑色常规、点击跳转 */
+    .sidebar li:not(:has(> ul)) > a{ color: #2c2f36 !important; font-weight: 400; }
+    .sidebar li:not(:has(> ul)) > a.active{ color: var(--theme-color) !important; font-weight: 600; }
 
     /* ——手机端—— */
     @media (max-width: 768px){

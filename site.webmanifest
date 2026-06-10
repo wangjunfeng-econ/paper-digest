@@ -1,6 +1,6 @@
 {
   "name": "每日学术简报",
-  "short_name": "学术简报",
+  "short_name": "Digest",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",

@@ -9,7 +9,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="每日学术简报">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Digest">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="theme-color" content="#2f5d8a">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
@@ -94,10 +95,18 @@
     /* ——手机端—— */
     @media (max-width: 768px){
       :root{ --base-font-size: 16px; }
-      .markdown-section{ padding-left: 20px; padding-right: 20px; }
+      .content{ left: 0 !important; }
+      .markdown-section{ padding: 3.6rem 20px 3rem; }
       .markdown-section h1{ font-size: 1.7rem; }
       .markdown-section h2{ font-size: 1.28rem; margin-top: 2.1rem; }
-      .content{ left: 0 !important; }
+      /* 汉堡菜单做成悬浮按钮，避免压住标题 */
+      .sidebar-toggle{
+        top: 14px; left: 14px; width: 38px; height: 33px; padding: 9px;
+        background: rgba(255,255,255,.94);
+        border: 1px solid #e8e2d6; border-radius: 9px;
+        box-shadow: 0 1px 5px rgba(31,49,71,.12); z-index: 40;
+      }
+      .sidebar-toggle span{ background-color: var(--theme-color); }
     }
   </style>
 </head>

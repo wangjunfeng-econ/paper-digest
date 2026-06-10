@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.paperdigest.push</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/bill/PaperDigest/push_digest.sh</string>
+  </array>
+  <key>WatchPaths</key>
+  <array>
+    <string>/Users/bill/PaperDigest/archive</string>
+  </array>
+  <key>StandardOutPath</key>
+  <string>/Users/bill/PaperDigest/push.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/bill/PaperDigest/push.log</string>
+</dict>
+</plist>

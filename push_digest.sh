@@ -19,7 +19,7 @@ cd "$REPO"
       echo "  - ${y} 年 $((10#$m)) 月"
       prev="$y-$m"
     fi
-    echo "    - [$((10#$day)) 日]($f)"
+    echo "    - [$d]($f)"
   done
 } > _sidebar.md
 

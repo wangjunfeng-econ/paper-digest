@@ -96,12 +96,17 @@
     @media (max-width: 768px){
       :root{ --base-font-size: 16px; }
       .content{ left: 0 !important; }
-      .markdown-section{ padding: 3.6rem 20px 3rem; }
+      .markdown-section{ padding: 4.4rem 20px 3rem !important; }
       .markdown-section h1{ font-size: 1.7rem; }
       .markdown-section h2{ font-size: 1.28rem; margin-top: 2.1rem; }
-      /* 用主题自带的菜单按钮，仅微调位置与配色，避免叠加底框 */
-      .sidebar-toggle{ background: transparent; top: 12px; left: 12px; }
-      .sidebar-toggle span{ background-color: var(--theme-color); }
+      /* 菜单按钮：固定到左上角、透明无底框、上移，避免压住标题 */
+      .sidebar-toggle{
+        position: fixed !important; top: 8px !important; left: 12px !important; bottom: auto !important;
+        background: transparent !important; z-index: 50; padding: 8px;
+      }
+      .sidebar-toggle-button{ background: transparent !important; }
+      .sidebar-toggle span,
+      .sidebar-toggle-button span{ background-color: var(--theme-color) !important; }
     }
   </style>
 </head>
@@ -112,6 +117,7 @@
       name: '每日学术简报',
       nameLink: '#/',
       loadSidebar: true,
+      sidebarDisplayLevel: 1,
       subMaxLevel: 2,
       homepage: 'README.md',
       auto2top: true,
@@ -126,6 +132,7 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
 </body>
 </html>

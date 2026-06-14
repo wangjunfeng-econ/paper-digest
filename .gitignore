@@ -1,5 +1,6 @@
 # 操作类状态文件——仅保留在本地，不发布到站点
 block1_log.json
+block2_log.json
 block3_log.json
 block3_pool_fiscal_monetary.json
 block3_pool_multiplicity.json

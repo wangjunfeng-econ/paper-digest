@@ -1,5 +1,6 @@
 - 往期简报
   - 2026 年 6 月
+    - [2026-06-23](archive/digest-2026-06-23.md)
     - [2026-06-22](archive/digest-2026-06-22.md)
     - [2026-06-17](archive/digest-2026-06-17.md)
     - [2026-06-16](archive/digest-2026-06-16.md)

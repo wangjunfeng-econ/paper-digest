@@ -1,5 +1,6 @@
 - 往期简报
   - 2026 年 7 月
+    - [2026-07-29](archive/digest-2026-07-29.md)
     - [2026-07-28](archive/digest-2026-07-28.md)
     - [2026-07-27](archive/digest-2026-07-27.md)
     - [2026-07-26](archive/digest-2026-07-26.md)

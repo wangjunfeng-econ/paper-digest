@@ -1,5 +1,6 @@
 - 往期简报
   - 2026 年 8 月
+    - [2026-08-07](archive/digest-2026-08-07.md)
     - [2026-08-06](archive/digest-2026-08-06.md)
     - [2026-08-03](archive/digest-2026-08-03.md)
     - [2026-08-02](archive/digest-2026-08-02.md)

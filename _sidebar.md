@@ -1,5 +1,6 @@
 - 往期简报
   - 2026 年 9 月
+    - [2026-09-30](archive/digest-2026-09-30.md)
     - [2026-09-29](archive/digest-2026-09-29.md)
     - [2026-09-28](archive/digest-2026-09-28.md)
     - [2026-09-27](archive/digest-2026-09-27.md)
